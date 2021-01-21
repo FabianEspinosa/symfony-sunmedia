@@ -18,33 +18,18 @@ class UserEventRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, UserEvent::class);
     }
-
-    // /**
-    //  * @return UserEvent[] Returns an array of UserEvent objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    
+    /**
+    * @return UserEvent[] Returns an array of UserEvent objects
     */
+    public function findBetweenDates($beginDate, $finishDate ): array {
 
-    /*
-    public function findOneBySomeField($value): ?UserEvent
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('user_event')
+            ->where('user_event.creation_date BETWEEN :begin AND :finish')
+            ->setParameter('begin', $beginDate)
+            ->setParameter('finish', $finishDate)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
     }
-    */
+    
 }
