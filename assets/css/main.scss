@@ -1,0 +1,30 @@
+#app_container {
+    background-color: #F6F6F6;  
+    height: 100vh;  
+    #accordion_user_data {
+        .accordion-item {
+            margin: 10px;            
+        }
+        .accordion-body {
+            border-radius: 0 0 10px 10px;
+        }
+        .titleCard {
+            margin-right: 10px;
+        }
+        .accordion-body {
+            background-color: #fff;
+        }
+        .collapsed {
+            background-color: #000;
+            color: #fff;            
+            border-radius: 10px!important;
+        }
+        .accordion-button {
+            border-radius: 10px 10px 0 0;
+            border: none;
+        }
+        .accordion-collapse {
+            border: none;
+        }
+    }
+}
