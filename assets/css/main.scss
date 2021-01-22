@@ -1,53 +1,51 @@
+@import "./_variables.scss";
 #app_container {
-    background-color: #F6F6F6;  
+    background-color: $background-general;
     height: 100vh;
     .cont_component {
         height: calc(100% - 112px);
-        overflow-y:auto;
-    }
-    #accordion_user_data {
-        .accordion-item {
-            margin: 10px;            
-        }
-        .accordion-body {
-            border-radius: 0 0 10px 10px;
-        }
-        .titleCard {
-            margin-right: 10px;
-        }
-        .accordion-body {
-            background-color: #fff;
-        }
-        .collapsed {
-            background-color: #B2B2B2!important;
-            color: #000!important;            
-            border-radius: 10px!important;
-        }
-        .accordion-button {
-            background-color: #000;
-            border-radius: 10px 10px 0 0;
-            color: #fff;
-            border: none;
-        }
-        .accordion-button:focus {
-            box-shadow: none;
-        }
-        .accordion-collapse {
-            border: none;
-        }
-        .titleBodyCard {
-            margin-right: 5px;
+        overflow-y: auto;
+        #accordion_user_data {
+            .accordion-item {
+                margin: 10px;
+                .accordion-button {
+                    background-color: $black;
+                    border-radius: 10px 10px 0 0;
+                    color: $white;
+                    border: none;
+                    &:focus {
+                        box-shadow: none;
+                    }
+                    .titleCard {
+                        margin-right: 10px;
+                    }
+                }
+                .accordion-collapse {
+                    border: none;
+                    .accordion-body {
+                        border-radius: 0 0 10px 10px;
+                        background-color: $white;
+                        .titleBodyCard {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .collapsed {
+                    background-color: $colapsed-color !important;
+                    color: $black !important;
+                    border-radius: 10px !important;
+                }
+            }
         }
     }
-
     .footer-cont {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #212529!important;
+        background-color: $foot-bg !important;
         min-height: 56px;
         .footext {
-            color: #fff;
+            color: $white;
         }
     }
 }
