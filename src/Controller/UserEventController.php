@@ -27,15 +27,15 @@ class UserEventController extends AbstractController
     	try {
     		$beginDate  = date('Y-m-d', strtotime('-30 days')) . ' 00:00:00';
             $finishDate = date('Y-m-d') . ' 23:59:59';            
-            $dataEvents = $userEventRepository->userEventList($beginDate, $finishDate);            
-    	} catch (Exception $e) {
-			$dataEvents = [];
+            $dataEvents = $userEventRepository->userEventList($beginDate, $finishDate); 
+            $response = new Response();
+            $response->headers->set('Content-Type', 'application/json');
+            $response->headers->set('Access-Control-Allow-Origin', '*');
+            $response->setContent(json_encode($dataEvents));
+            return $response;
+    	} catch (Exception $exception) {
+			return response()->json(['message' => $exception->getMessage()], 403);
     	}
-        $response = new Response();
-
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');      
-        $response->setContent(json_encode($dataEvents));        
-        return $response;
+        
     }
 }
