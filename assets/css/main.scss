@@ -1,6 +1,10 @@
 #app_container {
     background-color: #F6F6F6;  
-    height: 100vh;  
+    height: 100vh;
+    .cont_component {
+        height: calc(100% - 112px);
+        overflow-y:auto;
+    }
     #accordion_user_data {
         .accordion-item {
             margin: 10px;            
@@ -15,16 +19,35 @@
             background-color: #fff;
         }
         .collapsed {
-            background-color: #000;
-            color: #fff;            
+            background-color: #B2B2B2!important;
+            color: #000!important;            
             border-radius: 10px!important;
         }
         .accordion-button {
+            background-color: #000;
             border-radius: 10px 10px 0 0;
+            color: #fff;
             border: none;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
         }
         .accordion-collapse {
             border: none;
+        }
+        .titleBodyCard {
+            margin-right: 5px;
+        }
+    }
+
+    .footer-cont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #212529!important;
+        min-height: 56px;
+        .footext {
+            color: #fff;
         }
     }
 }

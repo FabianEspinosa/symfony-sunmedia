@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 export const DataUsers = () => {
     const [users, setUsers] = useState([]);
@@ -13,18 +14,22 @@ export const DataUsers = () => {
             {users.map(user => (
                 <div key={user.id} className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
-                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={"#collapseOne"+ user.id} aria-expanded="true" aria-controls="collapseOne">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#collapseOne" + user.id} aria-expanded="true" aria-controls="collapseOne">
                             <strong className="titleCard">IP del usuario:</strong>{user.ip_user}
-            </button>
+                        </button>
                     </h2>
-                    <div id={"collapseOne" + user.id} className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion_user_data">
+                    <div id={"collapseOne" + user.id} className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion_user_data">
                         <div className="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+                            <div><strong className="titleBodyCard">Id del registro:</strong>{user.id}</div>
+                            <div><strong className="titleBodyCard">Fecha de creación: </strong>{moment(user.creation_date.date).format('MM/DD/YYYY hh:mm:ss a')}</div>
+                            {user.update_date != null && <div><strong className="titleBodyCard">Fecha de actualización: </strong> {moment(user.update_date.date).format('MM/DD/YYYY hh:mm:ss a')}</div>}
+                            <div><strong className="titleBodyCard">Navegador del usuario:</strong>{user.user_agent}</div>
+                            <div><strong className="titleBodyCard">Codigo del país:</strong>{user.country_code}</div>
+                            <div><strong className="titleBodyCard">Clave del evento:</strong>{user.event_code}</div>
+                        </div>
                     </div>
                 </div>
             ))}
-
         </div>
     )
 }
